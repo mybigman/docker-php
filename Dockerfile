@@ -2,7 +2,7 @@ FROM extremeshok/baseimage-alpine:3.8 AS BUILD
 LABEL mantainer="Adrian Kriel <admin@extremeshok.com>" vendor="eXtremeSHOK.com"
 
 RUN echo "**** Install packages ****" \
-  && apk-install bash ca-certificates pcre fcgi supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite
+  && apk-install bash ca-certificates pcre fcgi supervisor curl unzip imagemagick jpegoptim pngquant optipng gifsicle sqlite less mariadb-client
 
 RUN echo "**** Adding codecasts php-repo ****"
 ## https://github.com/codecasts/php-alpine trust this project public key to trust the packages.
@@ -13,11 +13,12 @@ RUN echo "@php https://dl.bintray.com/php-alpine/v3.8/php-7.2" >> /etc/apk/repos
 
 # notice the @php is required to avoid getting default php packages from alpine instead.
 RUN echo  "**** Install php and some extensions ****" \
-  && apk-install   && apk-install php7@php php7-fpm@php \
+  && apk-install php7@php php7-fpm@php \
   php7-bcmath@php \
   php7-ctype@php \
   php7-curl@php \
   php7-dom@php \
+  php7-exif@php \
   php7-gd@php \
   php7-iconv@php \
   php7-imagick@php \
@@ -44,8 +45,7 @@ RUN echo  "**** Install php and some extensions ****" \
   php7-sqlite3@php \
   php7-xml@php \
   php7-xmlreader@php \
-  php7-zlib@php \
-  php7-mcrypt@php
+  php7-zlib@php
 
 # allow for php on the command line
 RUN ln -s /usr/bin/php7 /usr/bin/php
