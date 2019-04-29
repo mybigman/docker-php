@@ -21,7 +21,7 @@
 * Optional: Install wordpress, selected plugins and optimise it
 * Optional: Ioncube
 # PHP-Redis-sessions
-* PHP_REDIS_SESSIONS=yes
+* PHP_REDIS_SESSIONS=no
 * PHP_REDIS_HOST=redis
 * PHP_REDIS_PORT=6379
 
@@ -36,7 +36,7 @@ https://github.com/codecasts/php-alpine#available-packages
 * PHP_MEMORY_LIMIT=256 (in mbyte)
 * PHP_DISABLE_FUNCTIONS=shell_exec (set to false to disable, can use a comma separated list)
 * PHP_CHOWN=true (set to false to disable)
-* PHP_IONCUBE=true (set to false to disable)
+* PHP_IONCUBE=false (set to true to enable)
 
 # EXTERNAL SMTP
 * PHP_SMTP_HOST=
